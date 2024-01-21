@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" style="margin:0px;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offline Notes</title>
+  <meta name="description"
+    content="Keeping your notes safe and private is easy. This page saves your notes in local storage.">
+</head>
+
+<style>
+  :root {
+    --padding: 1.5rem;
+    --font-size: 1.5rem;
+    font-family: monospace;
+    /* --font-family: serif; */
+    /* --font-family:sans-serif */
+  }
+
+  body {
+    width: 700px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 100%;
+    overflow-y: scroll;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      color: black;
+      background-color: white;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color: white;
+      background-color: black;
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: var(--padding);
+    padding-right: var(--padding);
+  }
+
+  #contenteditable {
+    padding-top: var(--padding);
+    width: calc(100vw - 2 * var(--padding));
+    height: calc(100vh - 3 * var(--padding));
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+  }
+
+  #contenteditable:focus-visible {
+    outline: none;
+  }
+
+  #emailinput {
+    width: 230px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+
+  #clearall {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #clearall:hover {
+    background-color: #0056b3;
+  }
+
+  #clearall:active {
+    background-color: #003d80;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: #007BFF;
+    border: 1px solid #007BFF;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  a:hover {
+    background-color: #007BFF;
+    color: white;
+  }
+
+  a:active {
+    background-color: #0056b3;
+  }
+
+  #shortcut {
+    display: contents;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+
+  #shortcut:hover {
+    color: #0056b3;
+  }
+</style>
+
+<body style="margin:0px;">
+  <div style="display:flex; align-items:center;justify-content: end; gap: 8px;">
+    <button id="clearall" style="margin-right:auto">Clear all</button>
+    <a id="a" href="" download="">
+      Save to txt
+      <span id="shortcut" style="display: contents;">(CTRL + S)</span>
+    </a>
+    <a id="mailto" href="" download="">mailto</a>
+    <input id="emailinput" type="text" placeholder="Enter email address">
+  </div>
+  <div id="contenteditable" contenteditable></div>
+</body>
+
+<script src="popup.js"></script>
+
+</html>
